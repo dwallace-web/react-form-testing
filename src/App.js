@@ -14,27 +14,28 @@ export class App extends Component {
   }
 
   signup() {
-    console.log('sign up started');
-    fetch('http://localhost:2000/user/signup', {
+    const myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+
+    const raw = JSON.stringify(this.state);
+
+    const requestOptions = {
       method: 'POST',
-      headers: new Headers({
-        'Content-Type': 'application/json',
-      }),
-      body: JSON.stringify(this.state),
-    }).then((res) => {
-      res.json().then((result) => {
-        console.warn('result', result);
-        localStorage.setItem(
-          'signup',
-          JSON.stringify({
-            login: true,
-            token: result.token,
-          })
-        );
-      });
-    });
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow',
+    };
+
+    fetch('http://localhost:2000/user/signup', requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => console.log('error', error));
   }
+
   render() {
+    // const { email, username, password } = this.state
     return (
       <div>
         <h1>JWT Token in react</h1>
