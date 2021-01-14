@@ -63,13 +63,28 @@ export class SignUp extends Component {
               this.setState({ password: data.target.value });
             }}
           />
+          <input
+            type="text"
+            value={this.state.phonenumber}
+            name="phonenumber"
+            onChange={(data) => {
+              this.setState({ phonenumber: data.target.value });
+            }}
+          />
+          <input
+            type="text"
+            value={this.state.restauraurantowner}
+            name="restauraurantowner"
+            onChange={(data) => {
+              this.setState({ restauraurantowner: data.target.value });
+            }}
+          />
           <button
             onClick={() => {
               this.Register();
             }}
           >
-            {' '}
-            Submit Data{' '}
+            Submit Data
           </button>
           {/*             <input
               type="text"
