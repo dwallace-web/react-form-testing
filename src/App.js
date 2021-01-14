@@ -1,82 +1,78 @@
 import React, { Component } from 'react';
+import SignUp from './components/SignUp';
+import Register from './components/Register';
 
 export class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      email: null,
-      username: null,
-      password: null,
-      restaurantowner: true,
-      login: false,
-      store: null,
-    };
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     email: null,
+  //     username: null,
+  //     password: null,
+  //     restaurantowner: true,
+  //     login: false,
+  //     store: null,
+  //   };
+  // }
 
-  signup() {
-    const myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/json');
+  // async signup() {
+  //   const myHeaders = new Headers();
+  //   myHeaders.append('Content-Type', 'application/json');
 
-    const raw = JSON.stringify(this.state);
+  //   const data = {
+  //     email: this.state.email,
+  //     usernmae: this.state.username,
+  //     password: this.state.password,
+  //     restaurantowner: this.state.restaurantowner,
+  //   };
 
-    const requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow',
-    };
+  //   // const raw = JSON.stringify(data);
 
-    fetch('http://localhost:2000/user/signup', requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((error) => console.log('error', error));
-  }
+  //   const requestOptions = {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(data),
+  //     // redirect: 'follow',
+  //   };
+
+  //   await fetch('http://localhost:2000/user/signup', requestOptions)
+  //     .then((response) => response.json())
+  //     .then((result) => {
+  //       console.log(result);
+  //     })
+  //     .catch((error) => console.log('error', error));
+  // }
+
+  // signup() {
+  //   // const myHeaders = new Headers();
+  //   // myHeaders.append('Content-Type', 'application/json');
+
+  //   // const raw = JSON.stringify(this.state);
+
+  //   fetch('http://localhost:2000/user/test', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     // body: raw,
+  //     // redirect: 'follow',
+  //   })
+  //     .then((response) => response.json())
+  //     .then((result) => {
+  //       console.log(result);
+  //     })
+  //     .catch((error) => console.log('error', error));
+  // }
 
   render() {
     // const { email, username, password } = this.state
     return (
       <div>
-        <h1>JWT Token in react</h1>
-        <div>
-          <form>
-            <input
-              type="text"
-              placeholder="email"
-              onChange={(e) => {
-                this.setState({ email: e.target.value });
-              }}
-            />
-            <input
-              type="text"
-              placeholder="username"
-              onChange={(e) => {
-                this.setState({ username: e.target.value });
-              }}
-            />
-            <input
-              type="password"
-              onChange={(e) => {
-                this.setState({ password: e.target.value });
-              }}
-            />
-            {/*             <div
-              className="radio-buttons"
-              onChange={this.state.restaurantowner}
-            >
-              <input type="radio" value="true" name="restaurantowner" />
-              <input type="radio" value="false" name="restaurantowner" />
-            </div> */}
-            <button
-              onClick={() => {
-                this.signup();
-              }}
-            >
-              Sign Up
-            </button>
-          </form>
-        </div>
+        <Register />
+        <h2>Class Component</h2>
+        <SignUp />
       </div>
     );
   }
